@@ -1,0 +1,80 @@
+.navbar {
+  & nav {
+    background-color: #333;
+    padding: 24px;
+    text-align: center;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & img {
+      width: 120px;
+      margin-right: 100px;
+    }
+
+    li {
+      display: flex;
+      margin-right: 20px;
+      color: white;
+      cursor: pointer;
+
+      input {
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #2c2c2c;
+        border-radius: 5px;
+        background-color: #4d4d4d;
+        color: #ddd;
+        width: 300px;
+        outline: none;
+      }
+
+      input:focus {
+        border: 1px solid #666666; /* Corrected from "border: #666666;" */
+      }
+    }
+
+    & .searchBar { 
+      & .Arriba{
+        .avatar {
+          width: 40px; /* Ancho deseado */
+          height: 40px; /* Altura deseada */
+          overflow: hidden;
+          margin-right: 20px;
+          border-radius: 50%; /* Para hacer un recorte circular (opcional) */
+        }
+        
+        display: flex;
+        & p{
+          color: white;
+          padding-right: 10px;
+        }
+        & button{
+          background-color: #4d4d4d;
+          color: white;
+          padding: 7px 15px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+& button:hover {
+  background-color: #242424;
+}
+      }
+      & .ingresar-btn {
+        background-color: #4d4d4d;
+        color: white;
+        padding: 7px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .ingresar-btn:hover {
+        background-color: #242424;
+      }
+    }
+  }
+}
+
