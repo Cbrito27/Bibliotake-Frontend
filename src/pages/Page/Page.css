@@ -1,0 +1,57 @@
+/* Page.css */
+
+.PageContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  padding: 10px;
+
+}
+
+.LibrosContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.LibroItem {
+  box-sizing: border-box;
+  width: calc(25% - 20px); /* 4 libros por columna con espacio entre ellos */
+  margin: 0 10px 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.LibroItem p {
+  margin: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limita a 4 líneas */
+  -webkit-box-orient: vertical;
+}
+
+.LibroItem img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  /* Cambios en estilos para pantallas más pequeñas */
+  .LibroItem {
+    width: calc(50% - 20px); /* 2 libros por columna en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Cambios en estilos para pantallas aún más pequeñas */
+  .LibroItem {
+    width: 100%; /* 1 libro por columna en pantallas muy pequeñas */
+  }
+}
