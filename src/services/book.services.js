@@ -20,3 +20,19 @@ export const getBookImg = async (bookName) => {
     return null;
   }
 };
+export const rentBook = async (idLibro, usuario, fechaDevolucion) => {
+  try {
+    const response = await axios.post(
+      `${import.meta.env.VITE_REACT_APP_API_URL}libro/${idLibro}/alquilar`,
+      {
+        usuario: usuario,
+        fechaDevolucion: fechaDevolucion,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error al alquilar el libro", error);
+    throw error;
+  }
+};

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './Page.css';
-import { getBookImg } from '../../services/book.services';
-import { getAllBook } from '../../services/book.services';
+import React, { useEffect, useState } from "react";
+import "./Page.css";
+import { getBookImg } from "../../services/book.services";
+import { getAllBook } from "../../services/book.services";
 
-const Page = () => {
+const Page = ({ searchTerm }) => {
   const [libros, setLibros] = useState([]);
   const [librosImgUrls, setLibrosImgUrls] = useState([]);
 
@@ -12,41 +11,47 @@ const Page = () => {
     const fetchLibros = async () => {
       try {
         const librosData = await getAllBook();
-        setLibros(librosData);
 
-        // Obtener las URLs de las imágenes de los libros
-        const librosUrls = await Promise.all(librosData.map(async (libro) => {
-          if (libro.foto !== "" && libro.foto !== undefined) {
-            return await getBookImg(libro.foto);
-          } else {
-            return null;
-          }
-        }));
+        const filteredLibros = librosData.filter((libro) =>
+          libro.titulo.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        setLibros(filteredLibros);
+
+        const librosUrls = await Promise.all(
+          filteredLibros.map(async (libro) => {
+            if (libro.foto !== "" && libro.foto !== undefined) {
+              return await getBookImg(libro.foto);
+            } else {
+              return null;
+            }
+          })
+        );
 
         setLibrosImgUrls(librosUrls);
       } catch (error) {
-        console.error('Error al obtener la lista de libros', error);
+        console.error("Error al obtener la lista de libros", error);
       }
     };
 
     fetchLibros();
-  }, []);
-
-  console.log(libros);
-console.log(librosImgUrls);
+  }, [searchTerm]);
   return (
-    <div className='PageContent'>
+    <div className="PageContent">
       <h1>Listado de Libros</h1>
-      <div className='LibrosContainer'>
+      <div className="LibrosContainer">
         {libros.map((libro, index) => (
-          <div key={index} className='LibroItem'>
-                      
+          <div key={index} className="LibroItem">
             {librosImgUrls[index] && (
-              <img src={librosImgUrls[index]} alt={`Imagen de ${libro.titulo}`} />
+              <img
+                src={librosImgUrls[index]}
+                alt={`Imagen de ${libro.titulo}`}
+              />
             )}
-             <h3>{libro.titulo}</h3>
-            <p>{libro.sinopsis}</p> 
-           <p>Cantida disponible: {libro.disponibles}</p>
+            <h3>{libro.titulo}</h3>
+            <p>{libro.sinopsis}</p>
+            <p>Cantida disponible: {libro.disponibles}</p>
+            <button>Alquilar</button>
           </div>
         ))}
       </div>

@@ -4,10 +4,16 @@ import './Main.css';
 import { Page } from '../../pages/page';
 
 const Main = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (term) => {
+    setSearchTerm(term);
+  };
+
   return (
     <>
-      <NavBar/>
-      <Page/>
+      <NavBar onSearchChange={handleSearchChange} />
+      <Page searchTerm={searchTerm} />
     </>
   );
 };

@@ -5,7 +5,7 @@ import bibliotake from "../../assets/bibliotake.png";
 import LoginForm from "../LoginForm/LoginForm";
 import { dataDecrypt } from "../../util/encrypt";
 import { getPhotoComment } from "../../services/users.services";
-const NavBar = () => {
+const NavBar = ({ onSearchChange }) => {
   const encryptedUserData = sessionStorage.getItem("user");
   const user = encryptedUserData ? dataDecrypt(encryptedUserData) : null;
 
@@ -14,7 +14,10 @@ const NavBar = () => {
   const handleIngresarClick = () => {
     setMostrarLogin(true);
   };
-
+  const handleSearchChange = (event) => {
+    const term = event.target.value;
+    onSearchChange(term);
+  };
   const handleCloseLogin = () => {
     setMostrarLogin(false);
   };
@@ -45,7 +48,11 @@ const NavBar = () => {
         <div className="imagen">
         <li>
           <img src={bibliotake} alt="jnsadkjadskjasd" />
-          <input type="text" placeholder="Buscar" />
+          <input
+              type="text"
+              placeholder="Buscar"
+              onChange={handleSearchChange}
+            />
         </li>
         </div>
         <div className="searchBar">
