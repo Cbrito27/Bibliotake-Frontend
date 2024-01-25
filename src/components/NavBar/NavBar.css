@@ -34,7 +34,24 @@
         border: 1px solid #666666; /* Corrected from "border: #666666;" */
       }
     }
-
+.searchResults {
+  position: absolute; 
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+top: 67px;
+left: 244px;
+  width: 300px;
+  height: 40px;
+  z-index: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
     & .searchBar { 
       & .Arriba{
         .avatar {
@@ -77,4 +94,6 @@
     }
   }
 }
+
+/* Añade esta sección al final de tu archivo CSS */
 

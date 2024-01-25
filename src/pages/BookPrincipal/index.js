@@ -1,0 +1,1 @@
+export { BookPrincipal } from './BookPrincipal';

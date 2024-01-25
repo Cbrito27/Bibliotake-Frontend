@@ -1,0 +1,1 @@
+export { default as RentBook } from './RentBook';
