@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Books.css';
+import { dataDecrypt } from "../../util/encrypt";
 import { getBookImg } from '../../services/book.services';
 import { getAllBook } from '../../services/book.services';
 import { Link } from 'react-router-dom';
 const Books = () => {
+  const encryptedUserData = sessionStorage.getItem("user");
+  const user = encryptedUserData ? dataDecrypt(encryptedUserData) : null;
+
   const [libros, setLibros] = useState([]);
   const [librosImgUrls, setLibrosImgUrls] = useState([]);
 
@@ -14,7 +18,6 @@ const Books = () => {
         const librosData = await getAllBook();
         setLibros(librosData);
 
-        // Obtener las URLs de las imágenes de los libros
         const librosUrls = await Promise.all(librosData.map(async (libro) => {
           if (libro.foto !== "" && libro.foto !== undefined) {
             return await getBookImg(libro.foto);
@@ -32,8 +35,6 @@ const Books = () => {
     fetchLibros();
   }, []);
 
-  console.log(libros);
-console.log(librosImgUrls);
   return (
     <div className='BooksContent'>
       <h1>Listado de Libros</h1>

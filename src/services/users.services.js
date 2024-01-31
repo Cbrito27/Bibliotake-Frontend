@@ -52,7 +52,8 @@ export const getPhotoComment = async (idUser) => {
     }
   } catch (err) {
     console.error(err);
-    return null;
+
+    
   }
 };
 export const updateAvatar = async (userId, archivo) => {

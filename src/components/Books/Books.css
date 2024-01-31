@@ -1,6 +1,6 @@
-.PageContent {
-  max-width: 1200px;
-  margin: 0 auto;
+.BooksContent {
+overflow-y: scroll;
+max-height: 95vh;
 }
 
 h1 {

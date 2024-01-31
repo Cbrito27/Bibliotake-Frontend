@@ -36,3 +36,16 @@ export const rentBook = async (idLibro, usuario, fechaDevolucion) => {
     throw error;
   }
 };
+export const getBookId = async (idBook) => {
+  const getBooksId = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}libro/${idBook}`)
+  .then((res)=>{
+      return res.data
+  })
+  .catch((err)=>{
+      console.log(err)
+      return err
+  })
+  return getBooksId
+}
+
+

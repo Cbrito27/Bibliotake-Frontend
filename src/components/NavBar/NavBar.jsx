@@ -42,18 +42,22 @@ const NavBar = () => {
 
   useEffect(() => {
     const fetchAvatar = async () => {
-      if (user) {
+      if (user && user.id) {
         try {
           const url = await getPhotoComment(user.id);
-          setAvatarUrl(url);
+          if (url) {
+            setAvatarUrl(url);
+          }
         } catch (error) {
           console.error("Error fetching avatar:", error);
         }
       }
     };
-
+  
     fetchAvatar();
-  }, [user]);
+  }, [user && user.id]); // Only include user.id in the dependency array if user is truthy
+  
+  
 
   useEffect(() => {
     searchBooks();

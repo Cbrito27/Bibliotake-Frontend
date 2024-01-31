@@ -1,47 +1,73 @@
-/* En tu archivo CSS (por ejemplo, RentBook.css) */
+/* RentBook.css */
 
 .RentBook {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-}
-
-.RentBook h1 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.RentBook form {
   display: flex;
-  flex-direction: column;
-}
+  justify-content: space-between;
+  padding: 20px;
+  max-height: 100vh;
+  overflow-y: auto;
+  flex-direction: row-reverse;
 
-.RentBook label {
-  margin-bottom: 5px;
-}
+  .book-info {
+    /* flex: 1; */
+    max-width: 70%;
+  }
+  img {
+    width: 70%;
+  }
+  .book-info h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
 
-.RentBook input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
+  .author {
+    font-size: 16px;
+    color: #666;
+  }
 
-.RentBook button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+  .synopsis {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+  }
 
-.RentBook button:hover {
-  background-color: #0056b3;
+  .genre {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+  }
+
+  .rental-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rental-section img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  input[type="date"] {
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #757575;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #3a3a3a;
+  }
 }
